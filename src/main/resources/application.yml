@@ -1,0 +1,45 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: wechat
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/trade?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT
+    username: root
+    password: 123456
+  dao:
+    exceptiontranslation:
+      enabled: true
+  jpa:
+    database: MYSQL
+    show-sql: true
+  profiles:
+    active: swagger
+  servlet:
+    multipart:
+      max-file-size: 5120
+      max-request-size: 20480
+
+mybatis:
+  type-aliases-package: com.example.wechat.domain
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: false
+    aggressive-lazy-loading: true
+    auto-mapping-behavior: full
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+
+pagehelper:
+  offset-as-page-num: true
+  reasonable: true
+  helper-dialect: mysql
+  params: count=countSql
+  support-methods-arguments: true
+
+#自定义配置
+application:
+  #  文件上传地址
+  file:
+    path: F:/Part-time job/WeChatCilent/src/main/resources/upload

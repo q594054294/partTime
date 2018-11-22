@@ -1,0 +1,35 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: wechat
+  datasource:
+    type: org.apache.commons.dbcp2.BasicDataSource
+    url: jdbc:mysql://localhost:3306/trade?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123123
+  dao:
+    exceptiontranslation:
+      enabled: true
+  jpa:
+    database: MYSQL
+    show-sql: true
+  profiles:
+    active: prod
+    include: swagger
+mybatis:
+  type-aliases-package: com.example.wechat.domain
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+
+
+
+#pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
